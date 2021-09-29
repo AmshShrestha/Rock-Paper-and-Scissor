@@ -21,7 +21,9 @@ number_pick=randint(0,2)
 image_label=Label(win, image=image_list[number_pick])
 image_label.pack(pady=20)
 
-
+def spin():
+    number_pick = randint(0, 2)
+    image_label.config(win, image=image_list[number_pick], bd=0)
 
 
 #Create spin Button
