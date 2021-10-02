@@ -11,5 +11,11 @@ computer_value={
     "2":"Scissor"
 }
 
+Label(win, text="Rock Paper Scissor", font="normal 20 bold", fg="blue").pack(pady=20)
+frame=Frame(win)
+frame.pack()
+
+
+
 
 win.mainloop()
