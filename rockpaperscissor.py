@@ -30,5 +30,16 @@ l4.pack(pady=20)
 frame_1=Frame(win)
 frame_1.pack()
 
+button_1=Button(frame_1,text="Scissor", font="10", width=7)
+button_1.pack(side=LEFT, padx=10)
+
+button_2=Button(frame_1,text="Paper", font="10", width=7)
+button_2.pack(side=LEFT, padx=10)
+
+button_3=Button(frame_1,text="Rock", font="10", width=7)
+button_3.pack(padx=10)
+
+reset_button=Button(win, text="Reset", font="10")
+reset_button.pack(pady=20)
 
 win.mainloop()
