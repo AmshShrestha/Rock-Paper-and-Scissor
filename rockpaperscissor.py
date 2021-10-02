@@ -1,5 +1,5 @@
 from tkinter import*
-import random
+from random import randint
 
 win=Tk()
 win.geometry("500x500")
@@ -18,6 +18,50 @@ def reset():
     l1.config(text="PLAYER          ")
     l3.config(text="COMPUTER")
     l4.config(text="")
+
+def button_disable():
+    button_1["state"]="disable"
+    button_2["state"] = "disable"
+    button_3["state"] = "disable"
+
+def rock():
+    cv=computer_value[str(randint(0,2))]
+    if cv=="Rock":
+        match_result="Draw!"
+    elif cv == "Scissor":
+        match_result = "Player Win!"
+    else:
+        match_result = "Computer Win!"
+    l4.config(text=match_result)
+    l1.config(text="Rock         ")
+    l3.config(text=cv)
+    button_disable()
+
+def paper():
+    cv = computer_value[str(randint(0, 2))]
+    if cv == "Rock":
+        match_result = "Player Win!"
+    elif cv == "Scissor":
+        match_result = "Computer Win!"
+    else:
+        match_result = "Draw!"
+    l4.config(text=match_result)
+    l1.config(text="Paper        ")
+    l3.config(text=cv)
+    button_disable()
+
+def scissor():
+    cv = computer_value[str(randint(0, 2))]
+    if cv == "Rock":
+        match_result = "Computer Win!"
+    elif cv == "Scissor":
+        match_result = "Draw!"
+    else:
+        match_result = "Player Win!"
+    l4.config(text=match_result)
+    l1.config(text="Scissor         ")
+    l3.config(text=cv)
+    button_disable()
 
 Label(win, text="Rock Paper Scissor", font="normal 20 bold", fg="blue").pack(pady=20)
 frame=Frame(win)
@@ -38,13 +82,13 @@ l4.pack(pady=20)
 frame_1=Frame(win)
 frame_1.pack()
 
-button_1=Button(frame_1,text="Scissor", font="10", width=7)
+button_1=Button(frame_1,text="Scissor", font="10", width=7, command = scissor)
 button_1.pack(side=LEFT, padx=10)
 
-button_2=Button(frame_1,text="Paper", font="10", width=7)
+button_2=Button(frame_1,text="Paper", font="10", width=7, command = paper)
 button_2.pack(side=LEFT, padx=10)
 
-button_3=Button(frame_1,text="Rock", font="10", width=7)
+button_3=Button(frame_1,text="Rock", font="10", width=7,command=rock)
 button_3.pack(padx=10)
 
 reset_button=Button(win, text="Reset", font="10", command=reset)
