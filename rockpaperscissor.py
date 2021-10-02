@@ -11,6 +11,14 @@ computer_value={
     "2":"Scissor"
 }
 
+def reset():
+    button_1["state"]="active"
+    button_2["state"] = "active"
+    button_3["state"] = "active"
+    l1.config(text="PLAYER          ")
+    l3.config(text="COMPUTER")
+    l4.config(text="")
+
 Label(win, text="Rock Paper Scissor", font="normal 20 bold", fg="blue").pack(pady=20)
 frame=Frame(win)
 frame.pack()
@@ -39,7 +47,7 @@ button_2.pack(side=LEFT, padx=10)
 button_3=Button(frame_1,text="Rock", font="10", width=7)
 button_3.pack(padx=10)
 
-reset_button=Button(win, text="Reset", font="10")
+reset_button=Button(win, text="Reset", font="10", command=reset)
 reset_button.pack(pady=20)
 
 win.mainloop()
