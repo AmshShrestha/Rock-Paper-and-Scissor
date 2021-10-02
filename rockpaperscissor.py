@@ -1,6 +1,7 @@
 from tkinter import*
 from random import randint
-
+import log_in
+import database
 win=Tk()
 win.geometry("500x500")
 win.title("Scissor Paper Rock")
