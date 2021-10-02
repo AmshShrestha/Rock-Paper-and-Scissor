@@ -3,7 +3,6 @@ from random import randint
 from tkinter import ttk
 
 win = Tk()
-win.iconbitmap("")
 win.title("Rock Paper Scissor")
 
 # Deine images
