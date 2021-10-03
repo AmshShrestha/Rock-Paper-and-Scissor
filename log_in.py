@@ -1,32 +1,56 @@
-import database
 from tkinter import *
-def link():
-    filename = open("data_base_rps.db", "r+")
 
-    win.destroy()
+import sqlite3
+
+def add():
+    conn=sqlite3.connect("Rock Paper Scissor.db")
+    c=conn.cursor()
+    c.execute("INSERT INTO user VALUES(:username, :mail, :password, :phone)",
+              {
+               "username":name.get(),
+               "mail":e_mail.get(),
+               "password":password.get(),
+               "phone":phone.get()
+               })
+    conn.commit()
+    conn.close()
+
+    name.delete(0,END)
+    e_mail.delete(0, END)
+    password.delete(0, END)
+    phone.delete(0, END)
+
 win=Tk()
-
 win.title("LOGIN")
-win.geometry("300x110")
-
+win.geometry("320x250")
+win.resizable(0,0)
 win.iconbitmap('icon.ico')
+win.configure(bg="magenta")
+
+filename = open("Rock Paper Scissor.db", "r+")
+
+name=Entry(win,width=30)
+name.grid(row=1,column=1)
+e_mail=Entry(win,width=30)
+e_mail.grid(row=2,column=1)
+password=Entry(win, width=30)
+password.grid(row=3, column=1)
+phone=Entry(win, width=30)
+phone.grid(row=4, column=1)
+
+name_label=Label(win, text = "Username", font="ArialBlack",bg="magenta", fg="black")
+name_label.grid(row=1, column=0, padx=10, pady=10)
+e_mail_label=Label(win,text="E-mail",font="ArialBlack",bg="magenta", fg="black")
+e_mail_label.grid(row=2,column=0,padx=10,pady=10)
+password_label=Label(win,text="Password", font="ArialBlack",bg="magenta", fg="black")
+password_label.grid(row=3,column=0,padx=10,pady=10)
+phone_label=Label(win,text="Phone", font="ArialBlack",bg="magenta", fg="black")
+phone_label.grid(row=4,column=0,padx=10,pady=10)
+
+login_btn=Button(win,text='Add to database', font="ArialBlack",bg="red", fg="black",command=add)
+login_btn.grid(row=5,column=1,columnspan = 5)
 
 
-label_1=Label(win,text='E-mail:')
-label_1.grid(row=3,column=1,padx=10,pady=10)
-label_2=Label(win,text='Password:')
-label_2.grid(row=4,column=1,padx=10,pady=10)
-
-
-entry_1=Entry(win,width=30)
-entry_1.grid(row=3,column=2)
-entry_2=Entry(win,width=30)
-entry_2.grid(row=4,column=2)
-
-
-button_1=Button(win,text='LOGIN', command=database.submit)
-button_1.grid(row=9,column=2,columnspan = 5)
-
-var = IntVar()
 
 win.mainloop()
+

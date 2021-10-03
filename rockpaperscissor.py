@@ -1,17 +1,18 @@
 from tkinter import*
 from random import randint
 import log_in
-import database
+import datadb
+
 win=Tk()
 win.geometry("500x500")
 win.title("Scissor Paper Rock")
-
+win.configure(bg="blue")
 computer_value={
     "0":"Rock",
     "1":"Paper",
     "2":"Scissor"
 }
-
+#reset the game
 def reset():
     button_1["state"]="active"
     button_2["state"] = "active"
@@ -20,11 +21,13 @@ def reset():
     l3.config(text="COMPUTER")
     l4.config(text="")
 
+#disable the button
 def button_disable():
     button_1["state"]="disable"
     button_2["state"] = "disable"
     button_3["state"] = "disable"
 
+#coding for rock
 def rock():
     cv=computer_value[str(randint(0,2))]
     if cv=="Rock":
@@ -38,6 +41,7 @@ def rock():
     l3.config(text=cv)
     button_disable()
 
+#coding for paper
 def paper():
     cv = computer_value[str(randint(0, 2))]
     if cv == "Rock":
@@ -51,6 +55,7 @@ def paper():
     l3.config(text=cv)
     button_disable()
 
+#coding for scissor
 def scissor():
     cv = computer_value[str(randint(0, 2))]
     if cv == "Rock":
@@ -64,7 +69,7 @@ def scissor():
     l3.config(text=cv)
     button_disable()
 
-Label(win, text="Rock Paper Scissor", font="normal 20 bold", fg="blue").pack(pady=20)
+Label(win, text="Rock Paper Scissor", font="normal 20 bold", fg="red").pack(pady=20)
 frame=Frame(win)
 frame.pack()
 
@@ -81,18 +86,19 @@ l4=Label(win, text="", font="20", bg="white", width=15, borderwidth= 2, relief="
 l4.pack(pady=20)
 
 frame_1=Frame(win)
+frame_1.configure(bg="blue")
 frame_1.pack()
 
-button_1=Button(frame_1,text="Scissor", font="10", width=7, command = scissor)
+button_1=Button(frame_1,text="Scissor", font="10", width=7, bg="white",command = scissor)
 button_1.pack(side=LEFT, padx=10)
 
-button_2=Button(frame_1,text="Paper", font="10", width=7, command = paper)
+button_2=Button(frame_1,text="Paper", font="10", width=7, bg="white",command = paper)
 button_2.pack(side=LEFT, padx=10)
 
-button_3=Button(frame_1,text="Rock", font="10", width=7,command=rock)
+button_3=Button(frame_1,text="Rock", font="10", width=7,bg="white",command=rock)
 button_3.pack(padx=10)
 
-reset_button=Button(win, text="Reset", font="10", command=reset)
+reset_button=Button(win, text="Reset", font="10",bg="white", command=reset)
 reset_button.pack(pady=20)
 
 win.mainloop()
