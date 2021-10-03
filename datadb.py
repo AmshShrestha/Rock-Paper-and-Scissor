@@ -32,6 +32,20 @@ def add():
     password.delete(0, END)
     phone.delete(0, END)
 
+def show():
+    conn=sqlite3.connect("Rock Paper Scissor.db")
+    c=conn.cursor()
+    c.execute("SELECT *, oid FROM user")
+    records=c.fetchall()
+    print(records)
+
+    print_records=""
+    for record in records:
+        print_records += str(record[1]) + "  "+ str(record[3]) + "\n"
+    query_label = Label(win, text = print_records)
+    query_label.grid(row =10, column=0)
+    conn.commit()
+    conn.close()
 
 name=Entry(win, width=30)
 name.grid(row=0,column=1, padx=10)
@@ -54,7 +68,7 @@ phone_label.grid(row=3, column=0, padx=10)
 add_btn=Button(win, text="Add Record", command = add)
 add_btn.grid(row=5, column=0, columnspan=3,pady=5, ipadx=116)
 
-show_btn=Button(win, text="Show Record")
+show_btn=Button(win, text="Show Record", command = show)
 show_btn.grid(row=6, column=0, columnspan=3,pady=5, ipadx=112)
 
 del_btn=Button(win, text="Delete Record")
