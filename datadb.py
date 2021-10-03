@@ -113,7 +113,7 @@ def show():
 
     print_records=""
     for record in records:
-        print_records += str(record[1]) + " \n"+ str(record[3]) +str(record[4]) + "\n"
+        print_records += str(record[1]) + " \n"+ str(record[3])+" " +str(record[4]) + "\n"
     query_label = Label(win, text = print_records)
     query_label.grid(row =10, column=1)
     conn.commit()
