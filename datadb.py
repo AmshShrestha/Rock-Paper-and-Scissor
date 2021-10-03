@@ -8,12 +8,29 @@ conn=sqlite3.connect("Rock Paper Scissor.db")
 
 c=conn.cursor()
 
-# c.execute("""CREATE TABLE user(
-#             username text,
-#             e_mail text,
-#             password text
-#             phone integer
-#             )""")
+#c.execute("""CREATE TABLE user(
+#            username text,
+#            e_mail text,
+#            password text,
+#            phone integer)""")
+
+def add():
+    conn=sqlite3.connect("Rock Paper Scissor.db")
+    c=conn.cursor()
+    c.execute("INSERT INTO user VALUES(:username, :mail, :password, :phone)",
+              {
+               "username":   name.get(),
+               "mail": e_mail.get(),
+               "password":password.get(),
+               "phone":phone.get()
+               })
+    conn.commit()
+    conn.close()
+
+    name.delete(0,END)
+    e_mail.delete(0, END)
+    password.delete(0, END)
+    phone.delete(0, END)
 
 
 name=Entry(win, width=30)
@@ -34,7 +51,7 @@ password_label.grid(row=2, column=0, padx=10)
 phone_label=Label(win, text="Phone")
 phone_label.grid(row=3, column=0, padx=10)
 
-add_btn=Button(win, text="Add Record")
+add_btn=Button(win, text="Add Record", command = add)
 add_btn.grid(row=5, column=0, columnspan=3,pady=5, ipadx=116)
 
 show_btn=Button(win, text="Show Record")
