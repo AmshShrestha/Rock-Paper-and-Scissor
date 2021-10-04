@@ -1,5 +1,4 @@
 from tkinter import *
-
 import sqlite3
 
 def add():
@@ -27,13 +26,15 @@ win.resizable(0,0)
 win.iconbitmap('icon.ico')
 win.configure(bg="magenta")
 
+
 filename = open("Rock Paper Scissor.db", "r+")
+
 
 name=Entry(win,width=30)
 name.grid(row=1,column=1)
 e_mail=Entry(win,width=30)
 e_mail.grid(row=2,column=1)
-password=Entry(win, width=30)
+password=Entry(win, width=30, show="*")
 password.grid(row=3, column=1)
 phone=Entry(win, width=30)
 phone.grid(row=4, column=1)

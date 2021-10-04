@@ -36,8 +36,8 @@ def update():
 
 def edit():
     editor=Tk()
-    editor.title("Update a record")
-    editor.geometry("400x400")
+    editor.title("Update record")
+    editor.geometry("500x400")
     editor.configure(bg="magenta")
     conn=sqlite3.connect("Rock Paper Scissor.db")
     c=conn.cursor()
@@ -55,7 +55,7 @@ def edit():
     name_editor.grid(row=0, column=1, padx=10, pady=10)
     e_mail_editor = Entry(editor, width=30)
     e_mail_editor.grid(row=1, column=1, padx=10,pady=10)
-    password_editor = Entry(editor, width=30)
+    password_editor = Entry(editor, width=30, show="*")
     password_editor.grid(row=2, column=1, padx=10,pady=10)
     phone_editor = Entry(editor, width=30)
     phone_editor.grid(row=3, column=1, padx=10,pady=10)
@@ -95,7 +95,7 @@ def show():
 
     print_records=""
     for record in records:
-        print_records +=str(record[4])+ " \t " + str(record[1])+ " \t " +str(record[3]) + "\n"
+        print_records += str(record[4])+ "  " + str(record[0])+ "  " +str(record[1])+ "  " + str(record[2])+ "  " +str(record[3]) + "\n"
     query_label = Label(win, text = print_records, bg="wheat", fg="green", font="heltevica 10 bold")
     query_label.grid(row =10, pady=20, padx=5, column=0, columnspan=2)
     conn.commit()
