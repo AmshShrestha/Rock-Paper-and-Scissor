@@ -14,12 +14,6 @@ def select():
     conn.commit()
     conn.close()
 
-
-
-
-def register():
-    import datadb
-
 win=Tk()
 win.title("LOGIN")
 win.geometry("320x250")
@@ -40,11 +34,6 @@ password_label.grid(row=3,column=0,padx=10,pady=10)
 
 login_btn=Button(win,text='Login', font="ArialBlack",bg="red", fg="black",command=select)
 login_btn.grid(row=5,column=1,columnspan = 5)
-
-register_btn=Button(win,text='Register', font="ArialBlack",bg="red", fg="black",command=register)
-register_btn.grid(row=6,column=1,columnspan = 5, pady=10)
-
-
 
 win.mainloop()
 
