@@ -1,6 +1,8 @@
 from tkinter import*
 from random import randint
-import pytest
+import log_in
+import datadb
+
 
 
 win=Tk()
@@ -28,9 +30,6 @@ def button_disable():
     button_1["state"]="disable"
     button_2["state"] = "disable"
     button_3["state"] = "disable"
-
-
-
 
 
 #coding for rock
