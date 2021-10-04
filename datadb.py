@@ -123,6 +123,9 @@ phone_label.grid(row=3, column=0, padx=10,pady=10)
 del_box_label=Label(win, text="Select account", bg="wheat", font="heltevica 10")
 del_box_label.grid(row=6, column=0,padx=10, pady=10)
 
+add_btn=Button(win, text="Show Record", bg="cyan", command = add)
+add_btn.grid(row=7, column=0,padx=20, pady=10 )
+
 show_btn=Button(win, text="Show Record", bg="cyan", command = show)
 show_btn.grid(row=7, column=0,padx=20, pady=10 )
 

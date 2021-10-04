@@ -2,22 +2,25 @@ from tkinter import *
 import sqlite3
 
 def add():
-    conn=sqlite3.connect("Rock Paper Scissor.db")
-    c=conn.cursor()
+    conn = sqlite3.connect("Rock Paper Scissor.db")
+    c = conn.cursor()
     c.execute("INSERT INTO user VALUES(:username, :mail, :password, :phone)",
               {
-               "username":name.get(),
-               "mail":e_mail.get(),
-               "password":password.get(),
-               "phone":phone.get()
-               })
+                  "username": name.get(),
+                  "mail": e_mail.get(),
+                  "password": password.get(),
+                  "phone": phone.get()
+              })
     conn.commit()
+
     conn.close()
+
 
     name.delete(0,END)
     e_mail.delete(0, END)
     password.delete(0, END)
     phone.delete(0, END)
+    win.destroy()
 
 win=Tk()
 win.title("LOGIN")
@@ -28,7 +31,6 @@ win.configure(bg="magenta")
 
 
 filename = open("Rock Paper Scissor.db", "r+")
-
 
 name=Entry(win,width=30)
 name.grid(row=1,column=1)
@@ -48,8 +50,9 @@ password_label.grid(row=3,column=0,padx=10,pady=10)
 phone_label=Label(win,text="Phone", font="ArialBlack",bg="magenta", fg="black")
 phone_label.grid(row=4,column=0,padx=10,pady=10)
 
-login_btn=Button(win,text='Add to database', font="ArialBlack",bg="red", fg="black",command=add)
+login_btn=Button(win,text='Login', font="ArialBlack",bg="red", fg="black",command=add)
 login_btn.grid(row=5,column=1,columnspan = 5)
+
 
 
 

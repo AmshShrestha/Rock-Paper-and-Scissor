@@ -1,7 +1,7 @@
 from tkinter import*
 from random import randint
 import log_in
-import datadb
+
 
 
 
