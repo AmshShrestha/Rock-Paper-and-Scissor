@@ -11,6 +11,26 @@ c=conn.cursor()
 #            e_mail text,
 #            password text,
 #            phone integer)""")
+def add():
+    conn = sqlite3.connect("Rock Paper Scissor.db")
+    c = conn.cursor()
+    c.execute("INSERT INTO user VALUES(:username, :mail, :password, :phone)",
+              {
+                  "username": name.get(),
+                  "mail": e_mail.get(),
+                  "password": password.get(),
+                  "phone": phone.get()
+              })
+    conn.commit()
+
+    conn.close()
+
+
+    name.delete(0,END)
+    e_mail.delete(0, END)
+    password.delete(0, END)
+    phone.delete(0, END)
+
 
 def update():
     conn=sqlite3.connect("Rock Paper Scissor.db")
@@ -85,7 +105,6 @@ def delete():
     del_box.delete(0,END)
     conn.commit()
     conn.close()
-
 def show():
     conn=sqlite3.connect("Rock Paper Scissor.db")
     c=conn.cursor()
@@ -100,6 +119,21 @@ def show():
     query_label.grid(row =10, pady=20, padx=5, column=0, columnspan=2)
     conn.commit()
     conn.close()
+    win.destroy()
+
+def show():
+     conn=sqlite3.connect("Rock Paper Scissor.db")
+     c=conn.cursor()
+     c.execute("SELECT *, oid FROM user")
+     records=c.fetchall()
+     print(records)
+
+     print_records=""
+     for record in records:
+         print_records += str(record[4])+ "  " + str(record[0])+ "  " +str(record[1])+ "  " + str(record[2])+ "  " +str(record[3]) + "\n"
+     query_label = Label(win, text = print_records, bg="wheat", fg="green", font="heltevica 10 bold")
+     query_label.grid(row =10, pady=20, padx=5, column=0, columnspan=2)#     conn.commit()
+     conn.close()
 
 name=Entry(win, width=55)
 name.grid(row=0,column=1, columnspan=2, padx=10, pady=10)
@@ -123,11 +157,11 @@ phone_label.grid(row=3, column=0, padx=10,pady=10)
 del_box_label=Label(win, text="Select account", bg="wheat", font="heltevica 10")
 del_box_label.grid(row=6, column=0,padx=10, pady=10)
 
-add_btn=Button(win, text="Show Record", bg="cyan", command = add)
+add_btn=Button(win, text="Add Record", bg="cyan", command = add)
 add_btn.grid(row=7, column=0,padx=20, pady=10 )
 
 show_btn=Button(win, text="Show Record", bg="cyan", command = show)
-show_btn.grid(row=7, column=0,padx=20, pady=10 )
+show_btn.grid(row=8, column=1,padx=20, pady=10 )
 
 del_btn=Button(win, text="Delete Record",bg="cyan", command=delete)
 del_btn.grid(row=7, column=1, padx=50, pady=10)

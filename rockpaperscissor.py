@@ -2,9 +2,6 @@ from tkinter import*
 from random import randint
 import log_in
 
-
-
-
 win=Tk()
 win.geometry("500x500")
 win.resizable(0,0)
